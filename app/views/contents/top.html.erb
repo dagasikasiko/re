@@ -1,0 +1,39 @@
+<!-- <%= page_entries_info @rss1 %> -->
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+		最新記事/50件
+	</div>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped entry tablesorter">
+     <thead>
+       <tr>
+         <th>時間</th>
+         <th>タイトル</th>
+         <th>サイト</th>
+       </tr>
+     </thead>
+      <tbody>
+        <% @rss1.each_with_index do |entry,i| %>
+        <tr>
+          <th scope="row"><%= entry.time.strftime("%H時%M分")%></th>
+        <td>
+          <% if entry.title.size <= 45  %>
+          <a href="<%= entry.url %>" target="_blank"><%= entry.title %></a>
+          <% else %>
+          <% little_title = entry.title%>
+          <% little_title.slice!(45,little_title.size)%>
+          <% little_title.insert(-1, "...") %>
+          <a href="<%= entry.url %>" target="_blank"><%= little_title %></a>
+          <% end%>
+        </td>
+        <td>
+          <%= entry.site_name %>
+        </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+    <%= paginate @rss1 %>

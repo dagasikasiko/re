@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AntenaRails</title>
+        <%= csrf_meta_tags %>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
+    <body>
+        <!-- 以下はナビゲーションバー -->
+        <%= render 'layouts/navbar' %>
+        <!-- 以下はサイドバー -->
+        <div class="col-md-2 sidebar">
+            <%= render 'layouts/sidebar'%>
+        </div>
+        <!-- 以下はメインコンテンツ -->
+        <div class="col-md-8">
+            <%= yield %>
+        </div>
+        <!-- 以下はサブメニュー -->
+        <div class="col-md-2">
+            <%= render 'layouts/submenu'%>
+        </div>
+    </body>
+</html>

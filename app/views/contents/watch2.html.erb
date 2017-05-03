@@ -1,0 +1,29 @@
+<table class="table table-hover">
+ <thead>
+   <tr>
+     <th>#</th>
+     <th>タイトル</th>
+     <th>サイト</th>
+   </tr>
+ </thead>
+  <tbody>
+    <% @rss2.items.each_with_index do |entry,i| %>
+    <tr>
+      <th scope="row"><%= i%></th>
+    <td>
+      <% if entry.title.size <= 50  %>
+      <a href="<%= entry.link %>"><%= entry.title %></a>
+      <% else %>
+      <% little_title = entry.title%>
+      <% little_title.slice!(50,little_title.size)%>
+      <% little_title.insert(-1, "...") %>
+      <a href="<%= entry.link %>"><%= little_title %></a>
+      <% end%>
+    </td>
+    <td>
+      <%= entry.dc_creator %>
+    </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
